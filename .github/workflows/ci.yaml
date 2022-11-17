@@ -3,7 +3,7 @@ name: porter-bundle-publish
 on:
   push:
     branches:
-      - **
+      - "**"
     tags:
       - v*
 
