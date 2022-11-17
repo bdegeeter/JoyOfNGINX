@@ -62,4 +62,4 @@ jobs:
       - name: Porter Publish Branch
         if: ${{ startsWith(github.ref, 'refs/heads/') }}
         run: |
-          make publish-porter-nginx-oss BUNDLE_VERSION=${{ steps.bundleVersion.outputs.version }}-${{ steps.meta.outputs.result }}
+          make publish-porter-nginx-oss BUNDLE_VERSION=${{ steps.bundleVersion.outputs.result }}-${{ steps.meta.outputs.version }}
