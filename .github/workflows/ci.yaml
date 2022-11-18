@@ -60,8 +60,10 @@ jobs:
       - name: Porter Publish Tag
         if: ${{ startsWith(github.ref, 'refs/tags/v') }}
         run: |
-          make publish-porter-nginx-oss BUNDLE_VERSION=${{ steps.meta.outputs.version }}
-          make update-porter-yaml-version update-porter-docs BUNDLE_VERSION=${{ steps.meta.outputs.version }}
+          TAG_VERSION=${{ steps.meta.outputs.version }}
+          BUNDLE_VERSION=${TAG_VERSION//v}
+          make publish-porter-nginx-oss BUNDLE_VERSION=${BUNDLE_VERSION}
+          make update-porter-yaml-version update-porter-docs BUNDLE_VERSION=${BUNDLE_VERSION}
       - name: Porter Publish Branch
         if: ${{ startsWith(github.ref, 'refs/heads/') }}
         run: |
